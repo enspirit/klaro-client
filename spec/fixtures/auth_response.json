@@ -1,0 +1,5 @@
+{
+  "token_type": "OAuth2",
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNmM2ODc3MGUtODk3Ni00NzcxLWJhMTctNDc5MjgwZjA4ZDYzIiwiaWF0IjoxNTY5MDY5MDAwLCJleHAiOjE1Njk1MDEwMDAsImlzcyI6Imp6aC13ZWJzaXRlLmtsYXJvLmNhcmRzIn0.78aYSL-poZFA0PUSDxXDwTYVDNZ9kYDDZdIvjH7su4g",
+  "expires_in": 432000
+}
