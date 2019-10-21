@@ -1,0 +1,30 @@
+
+{
+  "code": "foo-bar",
+  "ordering": 50000000,
+  "label": "Foo Bar",
+  "tagging": true,
+  "multiple": true,
+  "required": false,
+  "id": "foobar",
+  "deleted": false,
+  "deletedAt": null,
+  "deletedBy": null,
+  "semanticsType": null,
+  "datatype": "UserDefined",
+  "datatypeOptions": {},
+  "relevantKinds": [],
+  "values": [
+    {
+      "id": "techniques",
+      "label": "Techniques",
+      "ordering": 1000000,
+      "color": "#ffffff",
+      "semantics": null
+    }
+  ],
+  "attribute": false,
+  "supportsMultiple": true,
+  "supportsColor": true,
+  "userEditable": true
+}
