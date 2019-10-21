@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 module Klaro
   describe Client do
-    let(:client) {
-      Client.new("https://foobar.klaro.cards")
-    }
+    let(:client) do
+      Client.new('https://foobar.klaro.cards')
+    end
 
     describe '#intialize' do
       it 'has attribute request' do
@@ -24,16 +26,16 @@ module Klaro
       context 'with invalid data' do
         it 'raises a AuthenticationFailed if invalid data' do
           stub_auth(code: 404)
-          expect{ client.login('foobar', 'password') }.to raise_error(Client::Error::AuthenticationFailed)
+          expect { client.login('foobar', 'password') }.to raise_error(Client::Error::AuthenticationFailed)
         end
       end
     end
 
-    describe "#stories" do
+    describe '#stories' do
       it 'returns news stories' do
-         stub_stories(board: 'news')
-         stories = client.stories('news')
-         expect(stories.first["description"]).to eq('A Foo Bar story title')
+        stub_stories(board: 'news')
+        stories = client.stories('news')
+        expect(stories.first['description']).to eq('A Foo Bar story title')
       end
 
       it 'returns board not found' do
@@ -46,18 +48,31 @@ module Klaro
         stub_stories(board: 'news')
         client.stories('news').map do |story|
           expect(story).to be_a(Client::Story)
-          expect(story.specification).to eql(<<-MD)
-Hello ![Image Label](/s/path/to/image.jpg)
-MD
-          folder = Path(Dir.pwd + "/tmp")
+          expect(story.specification).to eql(<<~MD)
+            Hello ![Image Label](/s/path/to/image.jpg)
+          MD
+          folder = Path(Dir.pwd + '/tmp')
           relocated = story.download_and_relocate_images(folder.parent, folder, client)
           expect(relocated).to be_a(Client::Story)
           expect(relocated == story).to be(false)
-          expect(relocated.specification).to eql(<<-MD)
-Hello ![Image Label](/tmp/news/15.jpg)
-MD
-          expect((Path(Dir.pwd + "/tmp/news/15.jpg")).exists?).to be(true)
+          expect(relocated.specification).to eql(<<~MD)
+            Hello ![Image Label](/tmp/news/15.jpg)
+          MD
+          expect(Path(Dir.pwd + '/tmp/news/15.jpg').exists?).to be(true)
         end
+      end
+    end
+
+    describe '#dimensions' do
+      let(:dimensions) { JSON.parse File.read('spec/fixtures/dimensions.json') }
+      it 'retrieves all dimensions when no params provided' do
+        stub_dimensions
+        expect(client.dimensions).to eq(dimensions)
+      end
+      let(:foo_bar_dimension) { dimensions.select{|elm| elm['code']=='foo-bar'}.first}
+      it 'retrieves a specific dimension if code provided' do
+        stub_dimensions
+        expect(client.dimensions(code: 'foo-bar')).to eq(foo_bar_dimension)
       end
     end
   end

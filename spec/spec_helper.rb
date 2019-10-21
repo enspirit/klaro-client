@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'webmock/rspec'
 require 'klaro/client'
 
@@ -12,9 +14,7 @@ end
 
 def auth_header
   simple_header.merge!(
-    {
-      'Content-Type' => 'application/json'
-    }
+    'Content-Type' => 'application/json'
   )
 end
 
@@ -25,6 +25,7 @@ def simple_header
     'User-Agent' => 'http.rb/4.1.1'
   }
 end
+
 def response_body
   File.read('spec/fixtures/auth_response.json')
 end
@@ -34,28 +35,42 @@ def stories_data
 end
 
 def auth_body
-  "{\"grant_type\":\"client_credentials\",\"client_id\":\"foobar\",\"client_secret\":\"password\"}"
+  '{"grant_type":"client_credentials","client_id":"foobar","client_secret":"password"}'
 end
 
 def stub_stories(board:, code: 200)
   stub_request(:get, "https://foobar.klaro.cards/api/boards/#{board}/stories/")
     .with(
-      headers: simple_header)
-    .to_return(status: code, body: File.read('spec/fixtures/stories_data.json')
-  )
-  stub_request(:get, "https://foobar.klaro.cards/api/stories/1")
+      headers: simple_header
+    )
+    .to_return(status: code, body: File.read('spec/fixtures/stories_data.json'))
+  stub_request(:get, 'https://foobar.klaro.cards/api/stories/1')
     .with(
-      headers: simple_header)
+      headers: simple_header
+    )
     .to_return(status: 200, body: File.read('spec/fixtures/story_data.json'))
 end
 
 def stub_download_file
-  stub_request(:get, "https://foobar.klaro.cards/s/path/to/image.jpg").
-        with(
-          headers: {
-            'Connection'=>'close',
-            'Host'=>'foobar.klaro.cards',
-            'User-Agent'=>'http.rb/4.1.1'
-          }).
-        to_return(status:200, body: File.read('spec/fixtures/img.jpg'))
+  stub_request(:get, 'https://foobar.klaro.cards/s/path/to/image.jpg')
+    .with(
+      headers: {
+        'Connection' => 'close',
+        'Host' => 'foobar.klaro.cards',
+        'User-Agent' => 'http.rb/4.1.1'
+      }
+    )
+    .to_return(status: 200, body: File.read('spec/fixtures/img.jpg'))
+end
+
+def stub_dimensions
+  stub_request(:get, 'https://foobar.klaro.cards/api/dimensions')
+    .with(
+      headers: {
+        'Connection' => 'close',
+        'Host' => 'foobar.klaro.cards',
+        'User-Agent' => 'http.rb/4.1.1'
+      }
+    )
+    .to_return(status: 200, body: File.read('spec/fixtures/dimensions.json'))
 end
