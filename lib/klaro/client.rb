@@ -19,6 +19,11 @@ module Klaro
         Story.new(request.get("/api/stories/#{s['id']}"))
       end
     end
+
+    def dimensions(code: nil)
+      return request.get('/api/dimensions') unless code
+      request.get("/api/dimensions/#{code}")
+    end
   end
 end
 require_relative 'client/errors'
