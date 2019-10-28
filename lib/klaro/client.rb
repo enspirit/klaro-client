@@ -24,6 +24,16 @@ module Klaro
       return request.get('/api/dimensions') unless code
       request.get("/api/dimensions/#{code}")
     end
+
+    def upload_image(image_path)
+      body ={form:{
+        file: File.open(image_path),
+        filename: File.basename(image_path),
+        name: 'file'
+      }}
+      response = request.post('/s/', body)
+      response['location']
+    end
   end
 end
 require_relative 'client/errors'

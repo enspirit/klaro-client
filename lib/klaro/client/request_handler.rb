@@ -25,8 +25,13 @@ module Klaro
         raw ? response.to_s : JSON.parse(response.to_s)
       end
 
-    private
+      def post(endpoint, body)
+        url = "#{base_url}#{endpoint}"
+        info("POST `#{url}`")
+        http.post(url, body.merge(ssl_context: http_ctx))
+      end
 
+    private
       def get_token(response)
         raise Error::AuthenticationFailed if response.status >= 300 || response.status <200
 

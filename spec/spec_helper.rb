@@ -3,6 +3,7 @@
 require 'webmock/rspec'
 require 'klaro/client'
 require 'support/dimensions.rb'
+require 'support/upload_image'
 
 def stub_auth(body: response_body, code: 200)
   stub_request(:post, 'https://foobar.klaro.cards/api/auth/tokens/')
