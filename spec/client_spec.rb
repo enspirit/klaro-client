@@ -75,5 +75,14 @@ module Klaro
         expect(client.dimensions(code: 'foo-bar')).to eq(foo_bar_dimension)
       end
     end
+
+    describe '#upload_image' do
+      let(:image_path) { 'spec/fixtures/img.jpg' }
+      it 'returns a response with location info' do
+        allow(File).to receive(:open).with(image_path).and_return("#<File:0x00007f9c9da48bc0>")
+        stub_image_upload
+        expect(client.upload_image(image_path)).to include('http:foobar.klaro.cards/s/')
+      end
+    end
   end
 end
