@@ -26,13 +26,13 @@ module Klaro
     end
 
     def upload_image(image_path)
-      body ={form:{
-        file: File.open(image_path),
-        filename: File.basename(image_path),
-        name: 'file'
-      }}
+      body = {
+        form: {
+          file: HTTP::FormData::File.new(image_path)
+        }
+      }
       response = request.post('/s/', body)
-      response['location']
+      URI(response['location']).request_uri
     end
   end
 end
