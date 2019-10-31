@@ -6,7 +6,7 @@
   "createdAt":"2019-09-10T18:33:21+00:00",
   "createdBy":"Bernard",
   "updatedAt":"2019-09-10T18:33:21+00:00",
-  "specification":"Hello ![Image Label](/s/path/to/image.jpg)\n",
+  "specification":"Hello ![Image Label](/s/somehash.jpeg?n=foobar.jpg)\n",
   "task-progress":null,
   "assignee":null,
   "card-kind":"news",
