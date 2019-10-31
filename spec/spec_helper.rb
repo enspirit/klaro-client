@@ -54,7 +54,7 @@ def stub_stories(board:, code: 200)
 end
 
 def stub_download_file
-  stub_request(:get, 'https://foobar.klaro.cards/s/path/to/image.jpg')
+  stub_request(:get, 'https://foobar.klaro.cards/s/somehash.jpeg?n=foobar.jpg')
     .with(
       headers: {
         'Connection' => 'close',

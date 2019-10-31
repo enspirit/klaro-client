@@ -33,14 +33,14 @@ module Klaro
       end
 
       def get_image_path(url, folder)
-        file_extension = Path(url).ext
-        folder/"#{self['card-kind']}/#{identifier}#{file_extension}"
+        file_name = URI.parse(url).query.gsub('n=', '')
+        folder/"#{self['card-kind']}/#{identifier}/#{file_name}"
       end
 
       def download_image(url, image_path, client)
         image_path.parent.mkdir_p unless image_path.parent.exists?
         img = client.request.get("#{url}", true)
-        image_path.write(img)      
+        image_path.write(img)
       end
 
     end
