@@ -3,8 +3,8 @@
 Gem::Specification.new do |s|
   s.name = 'klaro-client'
   s.author = 'enspirit'
-  s.version = '0.1'
-  s.date = '2019-09-19'
+  s.version = '0.2.0'
+  s.date = '2020-01-06'
   s.summary = 'Klaro Client'
   s.license = 'MIT'
   s.files = [
