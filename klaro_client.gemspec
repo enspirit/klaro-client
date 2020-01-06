@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.name = 'klaro-client'
   s.author = 'enspirit'
-  s.version = '0.2.0'
+  s.version = '0.3.0'
   s.date = '2020-01-06'
   s.summary = 'Klaro Client'
   s.license = 'MIT'
@@ -11,8 +11,7 @@ Gem::Specification.new do |s|
     'Gemfile',
     'Rakefile',
     'VERSION',
-    'lib/klaro/client.rb'
-  ]
+  ] + Dir.glob('lib/**/*')
   s.require_paths = ['lib']
   s.add_dependency 'dotenv', '~> 2.7'
   s.add_dependency 'http', '~> 4.1'
