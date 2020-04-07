@@ -35,4 +35,5 @@ module Klaro
 end # module Klaro
 require_relative 'resource/story'
 require_relative 'resource/dimension'
+require_relative 'resource/dimension_value'
 require_relative 'resource/dimensions'
