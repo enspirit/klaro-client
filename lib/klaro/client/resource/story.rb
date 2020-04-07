@@ -10,6 +10,11 @@ module Klaro
         @summary ||= MdText.new(self.description.split("\n")[1..-1].join("\n"))
       end
 
+      def specification
+        @specification ||= MdText.new(super)
+      end
+      alias :details :specification
+
       def download_and_relocate_attachments(root_path, target_folder, client)
         as = self.attachments.map do |attachment|
           url = attachment["url"]
@@ -23,7 +28,7 @@ module Klaro
       end
 
       def download_and_relocate_images(root_path, target_folder, client)
-        spec = self.specification.gsub(%r{!\[([^\]]*)\]\(([^\)]*)\)}) do
+        spec = self.specification.to_s.gsub(%r{!\[([^\]]*)\]\(([^\)]*)\)}) do
           m = Regexp.last_match
           label, url = m[1], m[2]
           image_relative_path = handle_image(url, root_path, target_folder, client)

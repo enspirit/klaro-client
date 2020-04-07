@@ -5,7 +5,10 @@ module Klaro
     describe Story do
 
       let(:story) {
-        Story.dress({ description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?" })
+        Story.dress({
+          description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
+          specification: "Here **we** go!"
+        })
       }
 
       describe "title" do
@@ -20,6 +23,13 @@ module Klaro
         end
       end
 
+      describe "specification" do
+        it 'returns the specification' do
+          expect(story.specification.to_html).to eql("<p>Here <strong>we</strong> go!</p>")
+          expect(story.details.to_html).to eql("<p>Here <strong>we</strong> go!</p>")
+        end
+      end
+
       let(:client) do
         Klaro::Client.new('https://foobar.klaro.cards')
       end
@@ -29,7 +39,7 @@ module Klaro
           stub_story(1)
           story = client.story(1)
           expect(story).to be_a(Client::Story)
-          expect(story.specification).to eql(<<~MD)
+          expect(story.specification.to_s).to eql(<<~MD)
             Hello ![Image Label](/s/somehash.jpeg?n=foobar.jpg)
           MD
 
@@ -37,7 +47,7 @@ module Klaro
           relocated = story.download_and_relocate_images(folder.parent, folder, client)
           expect(relocated).to be_a(Client::Story)
           expect(relocated == story).to be(false)
-          expect(relocated.specification).to eql(<<~MD)
+          expect(relocated.specification.to_s).to eql(<<~MD)
             Hello ![Image Label](/tmp/news/15/foobar.jpg)
           MD
           expect(Path(Dir.pwd + '/tmp/news/15/foobar.jpg').exists?).to be(true)
