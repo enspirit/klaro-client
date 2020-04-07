@@ -1,6 +1,7 @@
 module Klaro
   class Client
     class RequestHandler
+      Http = HTTP
 
       attr_reader :base_url, :token
 
@@ -66,7 +67,8 @@ module Klaro
       def http
         Http.headers(
           {
-            Authorization: @token
+            "Authorization" => @token,
+            "Content-Type" => "application/json"
           }
         )
       end

@@ -32,11 +32,8 @@ module Klaro
         it 'gets data from endpoint' do
            stub_request(:get, "https://foobar.klaro.cards/boards/news/stories/")
             .with(
-               headers: {
-                'Connection'=>'close',
-                'Host'=>'foobar.klaro.cards',
-                'User-Agent'=>'http.rb/4.1.1'
-               })
+               headers: simple_header
+            )
             .to_return(status: 200, body: stories_data)
           request.get(endpoint)
         end

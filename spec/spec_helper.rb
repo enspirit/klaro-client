@@ -19,16 +19,14 @@ def stub_auth(body: response_body, code: 200)
 end
 
 def auth_header
-  simple_header.merge!(
-    'Content-Type' => 'application/json'
-  )
+  simple_header
 end
 
 def simple_header
   {
+    'Content-Type' => 'application/json',
     'Connection' => 'close',
-    'Host' => 'foobar.klaro.cards',
-    'User-Agent' => 'http.rb/4.1.1'
+    'Host' => 'foobar.klaro.cards'
   }
 end
 
@@ -60,11 +58,7 @@ end
 def stub_download_file
   stub_request(:get, 'https://foobar.klaro.cards/s/somehash.jpeg?n=foobar.jpg')
     .with(
-      headers: {
-        'Connection' => 'close',
-        'Host' => 'foobar.klaro.cards',
-        'User-Agent' => 'http.rb/4.1.1'
-      }
+      headers: simple_header
     )
     .to_return(status: 200, body: File.read('spec/fixtures/img.jpg'))
 end

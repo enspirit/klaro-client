@@ -3,7 +3,7 @@ PATH
   specs:
     klaro-client (0.4.0)
       dotenv (~> 2.7)
-      http (~> 4.1)
+      http (~> 4.2)
 
 GEM
   remote: https://rubygems.org/
@@ -16,18 +16,24 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
+    ffi (1.12.2)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     hashdiff (1.0.0)
-    http (4.1.1)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.0)
-      http_parser.rb (~> 0.6.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.1.1)
-    http_parser.rb (0.6.0)
+    http-form_data (2.3.0)
+    http-parser (1.2.1)
+      ffi-compiler (>= 1.0, < 2.0)
     path (2.0.1)
     public_suffix (4.0.1)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -44,7 +50,7 @@ GEM
     safe_yaml (1.0.5)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     webmock (3.7.5)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
