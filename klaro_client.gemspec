@@ -1,10 +1,13 @@
 # frozen_string_literal: true
+$LOAD_PATH.unshift(File.expand_path("../lib", __FILE__))
+require 'date'
+require 'klaro/client/version'
 
 Gem::Specification.new do |s|
   s.name = 'klaro-client'
   s.author = 'enspirit'
-  s.version = '0.3.0'
-  s.date = '2020-01-06'
+  s.version = Klaro::Client::VERSION
+  s.date = Date.today.to_s
   s.summary = 'Klaro Client'
   s.license = 'MIT'
   s.files = [

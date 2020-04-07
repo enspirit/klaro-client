@@ -17,16 +17,19 @@ module Klaro
       request.authenticate(*args, &bl)
     end
 
+    def dimension(code_or_id)
+      request.get("/api/dimensions/#{code_or_id}")
+    end
+
+    def dimensions
+      request.get('/api/dimensions')
+    end
+
     def stories(board)
       stories_list = request.get("/api/boards/#{board}/stories/")
       stories_list.map do |s|
         Story.new(request.get("/api/stories/#{s['id']}"))
       end
-    end
-
-    def dimensions(code: nil)
-      return request.get('/api/dimensions') unless code
-      request.get("/api/dimensions/#{code}")
     end
 
     def upload_image(image_path)
@@ -40,6 +43,7 @@ module Klaro
     end
   end
 end
+require_relative 'client/version'
 require_relative 'client/errors'
 require_relative 'client/request_handler'
 require_relative 'client/resource'
