@@ -1,0 +1,738 @@
+{
+  "id": "5ff0942c-5f69-470e-970b-7c4dd6166185",
+  "label": "Published",
+  "location": "published",
+  "mode": "kanban",
+  "objective": "",
+  "decksOpen": true,
+  "coloredDimension": "progress",
+  "compactDisplay": false,
+  "compactDecks": false,
+  "background": "default",
+  "anchors": {
+    "cards": [
+      "contributor",
+      "category"
+    ],
+    "toolbar": [
+      "category"
+    ],
+    "ordering": [
+      "-publication-date"
+    ]
+  },
+  "filters": {
+    "card-kind": [
+      "blog-post"
+    ],
+    "progress": [
+      "designable",
+      "published",
+      "publishable",
+      "final-review"
+    ]
+  },
+  "summaries": [
+
+  ],
+  "teamPermissions": [
+    {
+      "team": "admins",
+      "canRead": true,
+      "canWrite": true,
+      "canManage": true
+    },
+    {
+      "team": "public-feed",
+      "canRead": true,
+      "canWrite": false,
+      "canManage": false
+    }
+  ],
+  "createdBy": "Bernard",
+  "createdAt": "2020-04-07T10:06:23+00:00",
+  "dimensions": [
+    {
+      "id": "92da27bc-329e-4246-a463-7381ecc55063",
+      "datatype": "UserDefined",
+      "datatypeOptions": {
+      },
+      "label": "Language",
+      "code": "language",
+      "tagging": false,
+      "required": true,
+      "multiple": false,
+      "ordering": 45500000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "francais",
+          "label": "Français",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": 1000000
+        },
+        {
+          "id": "english",
+          "label": "English",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": 2000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": true,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "ff557874-9d89-480d-8770-3febacdbc81c",
+      "datatype": "Date",
+      "datatypeOptions": {
+      },
+      "label": "Created at",
+      "code": "created-at",
+      "tagging": false,
+      "required": false,
+      "multiple": false,
+      "ordering": 50000000,
+      "semanticsType": "DateRange",
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "last24Hours",
+          "label": "Last 24 hours",
+          "semantics": "-P1D",
+          "color": "#ffffff",
+          "ordering": 100000
+        },
+        {
+          "id": "last3Days",
+          "label": "Last 3 days",
+          "semantics": "-P3D .. -P1D",
+          "color": "#ffffff",
+          "ordering": 200000
+        },
+        {
+          "id": "last7Days",
+          "label": "Last 7 days",
+          "semantics": "-P7D .. -P3D",
+          "color": "#ffffff",
+          "ordering": 300000
+        },
+        {
+          "id": "last15Days",
+          "label": "Last 15 days",
+          "semantics": "-P15D .. -P7D",
+          "color": "#ffffff",
+          "ordering": 400000
+        },
+        {
+          "id": "last30Days",
+          "label": "Last 30 days",
+          "semantics": "-P30D .. -P15D",
+          "color": "#ffffff",
+          "ordering": 500000
+        },
+        {
+          "id": "last60Days",
+          "label": "Last 60 days",
+          "semantics": "-P60D .. -P30D",
+          "color": "#ffffff",
+          "ordering": 600000
+        },
+        {
+          "id": "last90Days",
+          "label": "Last 90 days",
+          "semantics": "-P90D .. -P60D",
+          "color": "#ffffff",
+          "ordering": 700000
+        },
+        {
+          "id": "earlier",
+          "label": "Earlier",
+          "semantics": "-P10Y .. -P90D",
+          "color": "#ffffff",
+          "ordering": 800000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": false,
+      "supportsRequired": false,
+      "supportsColor": true,
+      "userEditable": false
+    },
+    {
+      "id": "90dcba90-7b92-4e02-909c-3cf5de5392c9",
+      "datatype": "Date",
+      "datatypeOptions": {
+      },
+      "label": "Updated at",
+      "code": "updated-at",
+      "tagging": false,
+      "required": false,
+      "multiple": false,
+      "ordering": 50000000,
+      "semanticsType": "DateRange",
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "last24Hours",
+          "label": "Last 24 hours",
+          "semantics": "-P1D",
+          "color": "#ffffff",
+          "ordering": 100000
+        },
+        {
+          "id": "last3Days",
+          "label": "Last 3 days",
+          "semantics": "-P3D .. -P1D",
+          "color": "#ffffff",
+          "ordering": 200000
+        },
+        {
+          "id": "last7Days",
+          "label": "Last 7 days",
+          "semantics": "-P7D .. -P3D",
+          "color": "#ffffff",
+          "ordering": 300000
+        },
+        {
+          "id": "last15Days",
+          "label": "Last 15 days",
+          "semantics": "-P15D .. -P7D",
+          "color": "#ffffff",
+          "ordering": 400000
+        },
+        {
+          "id": "last30Days",
+          "label": "Last 30 days",
+          "semantics": "-P30D .. -P15D",
+          "color": "#ffffff",
+          "ordering": 500000
+        },
+        {
+          "id": "last60Days",
+          "label": "Last 60 days",
+          "semantics": "-P60D .. -P30D",
+          "color": "#ffffff",
+          "ordering": 600000
+        },
+        {
+          "id": "last90Days",
+          "label": "Last 90 days",
+          "semantics": "-P90D .. -P60D",
+          "color": "#ffffff",
+          "ordering": 700000
+        },
+        {
+          "id": "earlier",
+          "label": "Earlier",
+          "semantics": "-P10Y .. -P90D",
+          "color": "#ffffff",
+          "ordering": 800000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": false,
+      "supportsRequired": false,
+      "supportsColor": true,
+      "userEditable": false
+    },
+    {
+      "id": "71c1fe66-7ecf-48fa-9191-28565145e81a",
+      "datatype": "UserDefined",
+      "datatypeOptions": {
+      },
+      "label": "Category",
+      "code": "category",
+      "tagging": false,
+      "required": true,
+      "multiple": false,
+      "ordering": 44000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "hints-tutorials",
+          "label": "Hints & Tutorials",
+          "semantics": null,
+          "color": "#ffba00",
+          "ordering": 1000000
+        },
+        {
+          "id": "management",
+          "label": "Management",
+          "semantics": null,
+          "color": "#00b048",
+          "ordering": 2000000
+        },
+        {
+          "id": "productivity",
+          "label": "Productivity",
+          "semantics": null,
+          "color": "#00a2dc",
+          "ordering": 3000000
+        },
+        {
+          "id": "customers",
+          "label": "Customers",
+          "semantics": null,
+          "color": "#4c2a94",
+          "ordering": 4000000
+        },
+        {
+          "id": "news-updates",
+          "label": "News & Updates",
+          "semantics": null,
+          "color": "#f77d00",
+          "ordering": 5000000
+        },
+        {
+          "id": "klaro-life",
+          "label": "Klaro Life",
+          "semantics": null,
+          "color": "#b7137e",
+          "ordering": 6000000
+        },
+        {
+          "id": "vision",
+          "label": "Vision",
+          "semantics": null,
+          "color": "#e01514",
+          "ordering": 7000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": true,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "e4b5f4c0-1839-410d-ab5b-c34ea6a82e42",
+      "datatype": "Kind",
+      "datatypeOptions": {
+      },
+      "label": "Card kind",
+      "code": "card-kind",
+      "tagging": false,
+      "required": true,
+      "multiple": false,
+      "ordering": 2000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "colorDimension": null,
+          "summaryDimensions": [
+
+          ],
+          "id": "blog-post",
+          "label": "Blog Post",
+          "semantics": null,
+          "color": "#006aba",
+          "ordering": 8000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": false,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "edc9d694-64bc-43aa-8bd1-57bccbb62860",
+      "datatype": "Identifier",
+      "datatypeOptions": {
+      },
+      "label": "Identifier",
+      "code": "identifier",
+      "tagging": false,
+      "required": true,
+      "multiple": false,
+      "ordering": 1000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        }
+      ],
+      "attribute": true,
+      "supportsMultiple": false,
+      "supportsRequired": false,
+      "supportsColor": true,
+      "userEditable": false
+    },
+    {
+      "id": "06e24be0-589d-432e-b735-780509fc446a",
+      "datatype": "State",
+      "datatypeOptions": {
+      },
+      "label": "Progress",
+      "code": "progress",
+      "tagging": true,
+      "required": true,
+      "multiple": false,
+      "ordering": 26000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "idea",
+          "label": "Idea",
+          "semantics": null,
+          "color": "#e01514",
+          "ordering": 1000000
+        },
+        {
+          "id": "ongoing-write",
+          "label": "Ongoing write",
+          "semantics": null,
+          "color": "#f77d00",
+          "ordering": 1500000
+        },
+        {
+          "id": "designable",
+          "label": "Designable",
+          "semantics": null,
+          "color": "#ffba00",
+          "ordering": 1750000
+        },
+        {
+          "id": "final-review",
+          "label": "Final review",
+          "semantics": null,
+          "color": "#ffba00",
+          "ordering": 2625000
+        },
+        {
+          "id": "publishable",
+          "label": "Publishable",
+          "semantics": null,
+          "color": "#99cc2d",
+          "ordering": 3500000
+        },
+        {
+          "id": "published",
+          "label": "Published ✅",
+          "semantics": null,
+          "color": "#00b048",
+          "ordering": 6000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": false,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "148e4d7f-8929-444f-a8aa-c79e53cd4fb0",
+      "datatype": "UserDefined",
+      "datatypeOptions": {
+      },
+      "label": "Need visual",
+      "code": "need-visual",
+      "tagging": false,
+      "required": false,
+      "multiple": false,
+      "ordering": 47000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "yes",
+          "label": "Yes",
+          "semantics": null,
+          "color": "#4c2a94",
+          "ordering": 1000000
+        },
+        {
+          "id": "no",
+          "label": "No",
+          "semantics": null,
+          "color": "#202020",
+          "ordering": 2000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": true,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "33960af6-4063-49ce-8b79-dbd94aed987d",
+      "datatype": "UserDefined",
+      "datatypeOptions": {
+      },
+      "label": "Design Progress",
+      "code": "design-progress",
+      "tagging": false,
+      "required": false,
+      "multiple": false,
+      "ordering": 48500000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "todo",
+          "label": "Todo",
+          "semantics": null,
+          "color": "#ffba00",
+          "ordering": 1000000
+        },
+        {
+          "id": "done",
+          "label": "Done",
+          "semantics": null,
+          "color": "#f77d00",
+          "ordering": 2000000
+        },
+        {
+          "id": "validated",
+          "label": "Validated",
+          "semantics": null,
+          "color": "#00b048",
+          "ordering": 3000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": true,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "ac40ccf4-a725-4290-994f-baaca4f71d48",
+      "datatype": "ProjectMember",
+      "datatypeOptions": {
+      },
+      "label": "Contributor",
+      "code": "contributor",
+      "tagging": false,
+      "required": true,
+      "multiple": false,
+      "ordering": 38000000,
+      "semanticsType": null,
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "Julie",
+          "label": "Julie",
+          "semantics": "Julie",
+          "color": "#ffffff",
+          "ordering": 1000000
+        },
+        {
+          "id": "Bernard",
+          "label": "Bernard",
+          "semantics": "Bernard",
+          "color": "#ffffff",
+          "ordering": 2000000
+        },
+        {
+          "id": "Victor",
+          "label": "Victor",
+          "semantics": "Victor",
+          "color": "#ffffff",
+          "ordering": 3000000
+        },
+        {
+          "id": "Georges",
+          "label": "Georges",
+          "semantics": "Georges",
+          "color": "#ffffff",
+          "ordering": 4000000
+        },
+        {
+          "id": "David",
+          "label": "David",
+          "semantics": "David",
+          "color": "#ffffff",
+          "ordering": 5000000
+        },
+        {
+          "id": "Robot",
+          "label": "Robot",
+          "semantics": "Robot",
+          "color": "#ffffff",
+          "ordering": 6000000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": true,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    },
+    {
+      "id": "c8a440c4-5a40-4a94-ad17-b2a1d6142d1a",
+      "datatype": "Date",
+      "datatypeOptions": {
+      },
+      "label": "Publication date",
+      "code": "publication-date",
+      "tagging": false,
+      "required": false,
+      "multiple": false,
+      "ordering": 50000000,
+      "semanticsType": "DateRange",
+      "relevantKinds": [
+
+      ],
+      "deleted": false,
+      "deletedAt": null,
+      "deletedBy": null,
+      "values": [
+        {
+          "id": null,
+          "label": "[none]",
+          "semantics": null,
+          "color": "#ffffff",
+          "ordering": -1
+        },
+        {
+          "id": "inPast",
+          "label": "In past",
+          "semantics": "-BOT",
+          "color": "#202020",
+          "ordering": 100000
+        },
+        {
+          "id": "inFuture",
+          "label": "In future",
+          "semantics": "+EOT",
+          "color": "#202020",
+          "ordering": 200000
+        }
+      ],
+      "attribute": false,
+      "supportsMultiple": false,
+      "supportsRequired": true,
+      "supportsColor": true,
+      "userEditable": true
+    }
+  ]
+}

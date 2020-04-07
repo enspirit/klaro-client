@@ -34,7 +34,7 @@ module Klaro
             .with(
                headers: simple_header
             )
-            .to_return(status: 200, body: stories_data)
+            .to_return(status: 200, body: stories)
           request.get(endpoint)
         end
       end

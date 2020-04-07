@@ -12,10 +12,6 @@ module Klaro
         self.class.new(self.to_h.merge(
           attachments: as
         ))
-      rescue => ex
-        puts ex.message
-        puts ex.backtrace.join("\n")
-        raise
       end
 
       def download_and_relocate_images(root_path, target_folder, client)

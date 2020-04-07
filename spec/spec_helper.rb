@@ -3,6 +3,8 @@
 require 'webmock/rspec'
 require 'klaro/client'
 require 'support/dimensions.rb'
+require 'support/boards.rb'
+require 'support/stories.rb'
 require 'support/upload_image'
 
 def symbolize_keys(h)
@@ -34,25 +36,12 @@ def response_body
   File.read('spec/fixtures/auth_response.json')
 end
 
-def stories_data
-  File.read('spec/fixtures/stories_data.json')
+def stories
+  File.read('spec/fixtures/stories.json')
 end
 
 def auth_body
   '{"grant_type":"client_credentials","client_id":"foobar","client_secret":"password"}'
-end
-
-def stub_stories(board:, code: 200)
-  stub_request(:get, "https://foobar.klaro.cards/api/boards/#{board}/stories/")
-    .with(
-      headers: simple_header
-    )
-    .to_return(status: code, body: File.read('spec/fixtures/stories_data.json'))
-  stub_request(:get, 'https://foobar.klaro.cards/api/stories/1')
-    .with(
-      headers: simple_header
-    )
-    .to_return(status: 200, body: File.read('spec/fixtures/story_data.json'))
 end
 
 def stub_download_file

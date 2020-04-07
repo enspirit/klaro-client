@@ -5,7 +5,7 @@ require 'spec_helper'
 module Klaro
   describe Client do
     let(:client) do
-      Client.new('https://foobar.klaro.cards')
+      Klaro::Client.new('https://foobar.klaro.cards')
     end
 
     describe '#intialize' do
@@ -33,33 +33,13 @@ module Klaro
 
     describe '#stories' do
       it 'returns news stories' do
-        stub_stories(board: 'news')
-        stories = client.stories('news')
-        expect(stories.first['description']).to eq('A Foo Bar story title')
+        stub_board_stories(board: 'news')
+        stories = client.board_stories('news')
       end
 
       it 'returns board not found' do
-        stub_stories(board: 'no_board', code: 404)
-        expect { client.stories('no_board') }.to raise_error(Client::Error::NoSuchBoardFound)
-      end
-
-      it 'extract images' do
-        stub_download_file
-        stub_stories(board: 'news')
-        client.stories('news').map do |story|
-          expect(story).to be_a(Client::Story)
-          expect(story.specification).to eql(<<~MD)
-            Hello ![Image Label](/s/somehash.jpeg?n=foobar.jpg)
-          MD
-          folder = Path(Dir.pwd + '/tmp')
-          relocated = story.download_and_relocate_images(folder.parent, folder, client)
-          expect(relocated).to be_a(Client::Story)
-          expect(relocated == story).to be(false)
-          expect(relocated.specification).to eql(<<~MD)
-            Hello ![Image Label](/tmp/news/15/foobar.jpg)
-          MD
-          expect(Path(Dir.pwd + '/tmp/news/15/foobar.jpg').exists?).to be(true)
-        end
+        stub_board_stories(board: 'no_board', code: 404)
+        expect { client.board_stories('no_board') }.to raise_error(Client::Error::NoSuchBoardFound)
       end
     end
 
@@ -73,6 +53,16 @@ module Klaro
       end
     end
 
+    describe '#board' do
+      let(:board) { JSON.parse File.read('spec/fixtures/board.json') }
+      it 'retrieves a specific board if location is provided' do
+        stub_a_board('default')
+        got = client.board('default')
+        expect(got).to be_a(Klaro::Client::Board)
+        expect(got.to_h).to eq(symbolize_keys(board))
+      end
+    end
+
     describe '#dimensions' do
       let(:dimensions) { JSON.parse File.read('spec/fixtures/dimensions.json') }
       it 'retrieves all dimensions when no params provided' do
@@ -80,6 +70,16 @@ module Klaro
         got = client.dimensions
         expect(got).to be_a(Klaro::Client::Dimensions)
         expect(got.all?{|d| d.is_a?(Klaro::Client::Dimension) })
+      end
+    end
+
+    describe "#story" do
+      let(:story) { JSON.parse File.read('spec/fixtures/story.json') }
+      it 'retrieves a specific board if location is provided' do
+        stub_story(1)
+        got = client.story(1)
+        expect(got).to be_a(Klaro::Client::Story)
+        expect(got.to_h).to eq(symbolize_keys(story))
       end
     end
 

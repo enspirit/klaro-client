@@ -25,11 +25,16 @@ module Klaro
       Dimensions.dress(request.get('/api/dimensions'))
     end
 
-    def stories(board)
-      stories_list = request.get("/api/boards/#{board}/stories/")
-      stories_list.map do |s|
-        Story.new(request.get("/api/stories/#{s['id']}"))
-      end
+    def board(location_or_id)
+      Board.dress(request.get("/api/boards/#{location_or_id}"))
+    end
+
+    def board_stories(location_or_id)
+      Stories.dress(request.get("/api/boards/#{location_or_id}/stories/"))
+    end
+
+    def story(id_or_identifier)
+      Story.dress(request.get("/api/stories/#{id_or_identifier}"))
     end
 
     def upload_image(image_path)
