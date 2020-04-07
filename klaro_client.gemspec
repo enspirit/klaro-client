@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.add_dependency 'dotenv', '~> 2.7'
   s.add_dependency 'http', '~> 4.2'
+  s.add_dependency 'redcarpet', '~> 3.0', '>= 3.4'
   s.add_development_dependency 'path', '~> 2.0'
   s.add_development_dependency 'rspec', '~> 3.8'
   s.add_development_dependency 'webmock', '~> 3.7'

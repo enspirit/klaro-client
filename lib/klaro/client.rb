@@ -1,5 +1,6 @@
 require 'http'
 require 'path'
+require 'redcarpet'
 
 module Klaro
   class Client
@@ -50,5 +51,6 @@ module Klaro
 end
 require_relative 'client/version'
 require_relative 'client/errors'
+require_relative 'client/support/md_text'
 require_relative 'client/request_handler'
 require_relative 'client/resource'

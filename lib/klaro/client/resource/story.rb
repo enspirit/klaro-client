@@ -2,6 +2,14 @@ module Klaro
   class Client
     class Story < Resource
 
+      def title
+        @title ||= MdText.new(self.description.split("\n").first)
+      end
+
+      def summary
+        @summary ||= MdText.new(self.description.split("\n")[1..-1].join("\n"))
+      end
+
       def download_and_relocate_attachments(root_path, target_folder, client)
         as = self.attachments.map do |attachment|
           url = attachment["url"]
