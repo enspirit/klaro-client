@@ -1,6 +1,7 @@
 require 'http'
 require 'path'
 require 'redcarpet'
+require 'i18n'
 
 module Klaro
   class Client

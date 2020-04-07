@@ -15,6 +15,14 @@ module Klaro
       end
       alias :details :specification
 
+      def to_url(with_identifier = true)
+        I18n.config.available_locales = [:en, :fr]
+        url = I18n.transliterate(title.to_s)
+        url = url.downcase.gsub(/[^\w]+/,"-").gsub(/^[-]+|[-]+$/,"")
+        url = "#{self.identifier}-#{url}" if with_identifier
+        url
+      end
+
       def download_and_relocate_attachments(root_path, target_folder, client)
         as = self.attachments.map do |attachment|
           url = attachment["url"]

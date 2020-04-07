@@ -6,10 +6,26 @@ module Klaro
 
       let(:story) {
         Story.dress({
+          identifier: 127,
           description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
           specification: "Here **we** go!"
         })
       }
+
+      describe "to_url" do
+        it 'returns a dashed title' do
+          expect(story.to_url).to eql("127-hello-world-how-are-you")
+        end
+
+        it 'allows removing the id' do
+          expect(story.to_url(false)).to eql("hello-world-how-are-you")
+        end
+
+        it 'removes accents' do
+          story.description = "Héhéhé ààà"
+          expect(story.to_url(false)).to eql("hehehe-aaa")
+        end
+      end
 
       describe "title" do
         it 'returns the first line of the story description' do
