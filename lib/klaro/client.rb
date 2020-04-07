@@ -18,11 +18,11 @@ module Klaro
     end
 
     def dimension(code_or_id)
-      request.get("/api/dimensions/#{code_or_id}")
+      Dimension.dress(request.get("/api/dimensions/#{code_or_id}"))
     end
 
     def dimensions
-      request.get('/api/dimensions')
+      Dimensions.dress(request.get('/api/dimensions'))
     end
 
     def stories(board)

@@ -64,10 +64,12 @@ module Klaro
     end
 
     describe '#dimension' do
-      let(:foo_bar_dimension) { JSON.parse File.read('spec/fixtures/dimension.json')}
+      let(:foo_bar_dimension) { JSON.parse File.read('spec/fixtures/dimension.json') }
       it 'retrieves a specific dimension if code provided' do
         stub_a_dimension('foo-bar')
-        expect(client.dimension('foo-bar')).to eq(foo_bar_dimension)
+        got = client.dimension('foo-bar')
+        expect(got).to be_a(Klaro::Client::Dimension)
+        expect(got.to_h).to eq(symbolize_keys(foo_bar_dimension))
       end
     end
 
@@ -75,7 +77,9 @@ module Klaro
       let(:dimensions) { JSON.parse File.read('spec/fixtures/dimensions.json') }
       it 'retrieves all dimensions when no params provided' do
         stub_dimensions
-        expect(client.dimensions).to eq(dimensions)
+        got = client.dimensions
+        expect(got).to be_a(Klaro::Client::Dimensions)
+        expect(got.all?{|d| d.is_a?(Klaro::Client::Dimension) })
       end
     end
 

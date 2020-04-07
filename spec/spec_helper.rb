@@ -5,6 +5,10 @@ require 'klaro/client'
 require 'support/dimensions.rb'
 require 'support/upload_image'
 
+def symbolize_keys(h)
+  Hash[h.each_pair.map{|k,v| [k.to_sym, v]}]
+end
+
 def stub_auth(body: response_body, code: 200)
   stub_request(:post, 'https://foobar.klaro.cards/api/auth/tokens/')
     .with(
