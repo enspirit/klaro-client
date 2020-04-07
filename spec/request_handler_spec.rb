@@ -19,6 +19,14 @@ module Klaro
         end
       end
 
+      describe '#with_token' do
+        it 'allows setting a token to use' do
+          got = request.with_token('OAuth2', 'foobar')
+          expect(got).to be(request)
+          expect(got.authenticated?).to eql(true)
+        end
+      end
+
       describe '#get' do
         let(:endpoint) { '/boards/news/stories/' }
         it 'gets data from endpoint' do

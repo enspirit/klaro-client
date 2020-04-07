@@ -9,8 +9,12 @@ module Klaro
       @request = RequestHandler.new(base_url)
     end
 
-    def login(user, password)
-      request.authenticate(user, password)
+    def with_token(*args, &bl)
+      request.with_token(*args, &bl)
+    end
+
+    def login(*args, &bl)
+      request.authenticate(*args, &bl)
     end
 
     def stories(board)

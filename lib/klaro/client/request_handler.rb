@@ -6,6 +6,16 @@ module Klaro
 
       def initialize(url)
         @base_url = url
+        @token = nil
+      end
+
+      def authenticated?
+        not(@token.nil?)
+      end
+
+      def with_token(token_type, access_token)
+        @token = "#{token_type} #{access_token}"
+        self
       end
 
       def authenticate(user, password)
