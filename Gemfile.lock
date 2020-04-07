@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    klaro-client (0.4.1)
+    klaro-client (0.4.2)
       dotenv (~> 2.7)
       http (~> 4.2)
       i18n (>= 1.8)
