@@ -8,7 +8,7 @@ module Klaro
         Story.dress({
           identifier: 127,
           description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
-          specification: "Here **we** go!"
+          specification: "Here **we** go!\ncariage returns do not br\n\nbut doubles do p"
         })
       }
 
@@ -41,8 +41,8 @@ module Klaro
 
       describe "specification" do
         it 'returns the specification' do
-          expect(story.specification.to_html).to eql("<p>Here <strong>we</strong> go!</p>")
-          expect(story.details.to_html).to eql("<p>Here <strong>we</strong> go!</p>")
+          expect(story.specification.to_html).to eql("<p>Here <strong>we</strong> go!\ncariage returns do not br</p>\n\n<p>but doubles do p</p>")
+          expect(story.details.to_html).to eql(story.specification.to_html)
         end
       end
 

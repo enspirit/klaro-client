@@ -2,19 +2,30 @@ module Klaro
   class Client
     class MdText
 
-      RENDERER = Redcarpet::Render::HTML.new({
+      SHARED_OPTIONS = {
         filter_html: true,
-        hard_wrap: true,
         no_links: false,
         no_styles: true,
         safe_links_only: true,
         with_toc_data: false
-      })
+      }
 
-      MARKDOWN = Redcarpet::Markdown.new(RENDERER)
+      VARIANTS = {
+        :summary => Redcarpet::Markdown.new(
+          Redcarpet::Render::HTML.new(SHARED_OPTIONS.merge({
+            hard_wrap: true,
+          }))
+        ),
+        :details => Redcarpet::Markdown.new(
+          Redcarpet::Render::HTML.new(SHARED_OPTIONS.merge({
+            hard_wrap: false,
+          }))
+        )
+      }
 
-      def initialize(src)
+      def initialize(src, variant)
         @src = src
+        @renderer = VARIANTS[variant]
       end
 
       def to_s
@@ -22,7 +33,7 @@ module Klaro
       end
 
       def to_html
-        MARKDOWN.render(to_s).strip
+        @renderer.render(to_s).strip
       end
 
     end # class MdText

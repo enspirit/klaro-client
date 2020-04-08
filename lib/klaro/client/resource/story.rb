@@ -3,15 +3,15 @@ module Klaro
     class Story < Resource
 
       def title
-        @title ||= MdText.new(self.description.split("\n").first)
+        @title ||= MdText.new(self.description.split("\n").first, :summary)
       end
 
       def summary
-        @summary ||= MdText.new(self.description.split("\n")[1..-1].join("\n"))
+        @summary ||= MdText.new(self.description.split("\n")[1..-1].join("\n"), :summary)
       end
 
       def specification
-        @specification ||= MdText.new(super)
+        @specification ||= MdText.new(super, :details)
       end
       alias :details :specification
 
