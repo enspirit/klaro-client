@@ -11,6 +11,10 @@ module Klaro
       @request = RequestHandler.new(base_url)
     end
 
+    def absolute_url(url)
+      request.base_url + url
+    end
+
     def with_token(*args, &bl)
       request.with_token(*args, &bl)
     end
@@ -20,23 +24,23 @@ module Klaro
     end
 
     def dimension(code_or_id)
-      Dimension.dress(request.get("/api/dimensions/#{code_or_id}"))
+      Dimension.dress(request.get("/api/dimensions/#{code_or_id}"), self)
     end
 
     def dimensions
-      Dimensions.dress(request.get('/api/dimensions'))
+      Dimensions.dress(request.get('/api/dimensions'), self)
     end
 
     def board(location_or_id)
-      Board.dress(request.get("/api/boards/#{location_or_id}"))
+      Board.dress(request.get("/api/boards/#{location_or_id}"), self)
     end
 
     def board_stories(location_or_id)
-      Stories.dress(request.get("/api/boards/#{location_or_id}/stories/"))
+      Stories.dress(request.get("/api/boards/#{location_or_id}/stories/"), self)
     end
 
     def story(id_or_identifier)
-      Story.dress(request.get("/api/stories/#{id_or_identifier}"))
+      Story.dress(request.get("/api/stories/#{id_or_identifier}"), self)
     end
 
     def upload_image(image_path)

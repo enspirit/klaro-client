@@ -4,7 +4,7 @@ module Klaro
 
       def values
         @values ||= super
-          .map{|v| DimensionValue.dress(v) }
+          .map{|v| DimensionValue.dress(v, @client) }
           .sort{|v1,v2| v1.ordering <=> v2.ordering }
       end
 

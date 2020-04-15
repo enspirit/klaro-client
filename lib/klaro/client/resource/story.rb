@@ -16,7 +16,7 @@ module Klaro
       alias :details :specification
 
       def attachments
-        @attachments || super.map{|a| Attachment.dress(a) }
+        @attachments || super.map{|a| Attachment.dress(a, @client) }
       end
 
       def cover_attachment(force = false)
@@ -35,14 +35,14 @@ module Klaro
 
       def download_and_relocate_attachments(root_path, target_folder, client)
         as = self.attachments.map do |attachment|
-          url = attachment["url"]
-          url += "?n=" + URI.encode_www_form_component(attachment["filename"]) unless url =~ /\?n=/
+          url = attachment.url
+          url += "?n=" + URI.encode_www_form_component(attachment.filename) unless url =~ /\?n=/
           path = handle_image(url, root_path, target_folder, client)
-          attachment.merge("url" => path)
+          attachment.merge(url => path)
         end
-        self.class.new(self.to_h.merge(
+        self.class.dress(self.to_h.merge(
           attachments: as
-        ))
+        ), @client)
       end
 
       def download_and_relocate_images(root_path, target_folder, client)
@@ -52,9 +52,9 @@ module Klaro
           image_relative_path = handle_image(url, root_path, target_folder, client)
           "![#{label}](#{image_relative_path})"
         end
-        self.class.new(self.to_h.merge(
+        self.class.dress(self.to_h.merge(
           specification: spec
-        ))
+        ), @client)
       end
 
     private

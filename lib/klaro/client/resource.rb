@@ -2,6 +2,11 @@ module Klaro
   class Client
     class Resource < OpenStruct
 
+      def initialize(data, client)
+        super(data)
+        @client = client
+      end
+
       class << self
 
         def symbolize_keys(data)
@@ -10,8 +15,8 @@ module Klaro
           }]
         end
 
-        def dress(data)
-          new(symbolize_keys(data))
+        def dress(data, client)
+          new(symbolize_keys(data), client)
         end
 
       end # class << self
@@ -20,8 +25,9 @@ module Klaro
     class Collection
       include Enumerable
 
-      def initialize(items)
+      def initialize(items, client)
         @items = items.map{|i| self.class.dress_one(i) }
+        @client = client
       end
 
       def each(*args, &bl)
@@ -36,7 +42,7 @@ module Klaro
         end
 
         def dress_one(item)
-          @item_class.dress(item)
+          @item_class.dress(item, @client)
         end
       end
 

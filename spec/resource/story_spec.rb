@@ -4,12 +4,16 @@ module Klaro
   class Client
     describe Story do
 
+      let(:client) do
+        Klaro::Client.new('https://foobar.klaro.cards')
+      end
+
       def story(extra = {})
         Story.dress({
           identifier: 127,
           description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
           specification: "Here **we** go!\ncariage returns do not br\n\nbut doubles do p",
-        }.merge(extra))
+        }.merge(extra), client)
       end
 
       describe "to_url" do
