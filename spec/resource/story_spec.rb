@@ -4,13 +4,13 @@ module Klaro
   class Client
     describe Story do
 
-      let(:story) {
+      def story(extra = {})
         Story.dress({
           identifier: 127,
           description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
-          specification: "Here **we** go!\ncariage returns do not br\n\nbut doubles do p"
-        })
-      }
+          specification: "Here **we** go!\ncariage returns do not br\n\nbut doubles do p",
+        }.merge(extra))
+      end
 
       describe "to_url" do
         it 'returns a dashed title' do
@@ -22,8 +22,7 @@ module Klaro
         end
 
         it 'removes accents' do
-          story.description = "Héhéhé ààà"
-          expect(story.to_url(false)).to eql("hehehe-aaa")
+          expect(story(description: "Héhéhé ààà").to_url(false)).to eql("hehehe-aaa")
         end
       end
 
@@ -43,6 +42,29 @@ module Klaro
         it 'returns the specification' do
           expect(story.specification.to_html).to eql("<p>Here <strong>we</strong> go!\ncariage returns do not br</p>\n\n<p>but doubles do p</p>")
           expect(story.details.to_html).to eql(story.specification.to_html)
+        end
+      end
+
+      describe "cover_attachement" do
+        it 'returns the attachment marked as such when it exists' do
+          s = story({
+            attachments: [
+              { id: 1, isCover: false },
+              { id: 2, isCover: true }
+            ]
+          })
+          expect(s.cover_attachment).not_to be_nil
+          expect(s.cover_attachment.id).to eql(2)
+        end
+        it 'returns the first attachment when no one but forced' do
+          s = story({
+            attachments: [
+              { id: 1, isCover: false },
+              { id: 2, isCover: false }
+            ]
+          })
+          expect(s.cover_attachment).to be_nil
+          expect(s.cover_attachment(true).id).to eql(1)
         end
       end
 

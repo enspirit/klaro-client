@@ -7,8 +7,8 @@ require 'support/boards.rb'
 require 'support/stories.rb'
 require 'support/upload_image'
 
-def symbolize_keys(h)
-  Hash[h.each_pair.map{|k,v| [k.to_sym, v]}]
+def symbolize_keys(*args, &bl)
+  Klaro::Client::Resource.symbolize_keys(*args, &bl)
 end
 
 def stub_auth(body: response_body, code: 200)

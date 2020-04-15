@@ -3,8 +3,18 @@ module Klaro
     class Resource < OpenStruct
 
       class << self
-        alias :dress :new
-      end
+
+        def symbolize_keys(data)
+          Hash[data.each_pair.map{|k,v|
+            [k.to_sym, v]
+          }]
+        end
+
+        def dress(data)
+          new(symbolize_keys(data))
+        end
+
+      end # class << self
 
     end # class Resource
     class Collection
@@ -34,6 +44,7 @@ module Klaro
   end # class Client
 end # module Klaro
 require_relative 'resource/story'
+require_relative 'resource/attachment'
 require_relative 'resource/stories'
 require_relative 'resource/dimension'
 require_relative 'resource/dimension_value'

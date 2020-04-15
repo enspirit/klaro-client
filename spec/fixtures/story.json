@@ -11,5 +11,18 @@
   "assignee":null,
   "card-kind":"news",
   "status":"published",
-  "recently-created":"2019-09-10T18:33:21+00:00"
+  "recently-created":"2019-09-10T18:33:21+00:00",
+  "attachments": [
+    {
+      "id": "8d7612f2-9eba-4397-b69d-8dc53e2790b3",
+      "filename": "DSC03284.jpg",
+      "url": "/s/BPJ7pnHSBCpKjOrdplsP9A%3D%3D.jpeg?n=DSC03284.jpg",
+      "thumbnailUrl": "/s/BPJ7pnHSBCpKjOrdplsP9A%3D%3D.jpeg?n=DSC03284.jpg",
+      "description": "",
+      "sizeInBytes": 510176,
+      "isCover": true,
+      "createdAt": "2020-04-07T12:55:38+00:00",
+      "createdBy": "Julie"
+    }
+  ]
 }

@@ -15,6 +15,16 @@ module Klaro
       end
       alias :details :specification
 
+      def attachments
+        @attachments || super.map{|a| Attachment.dress(a) }
+      end
+
+      def cover_attachment(force = false)
+        got = (self.attachments || []).find{|a| a[:isCover] }
+        got = (self.attachments || []).first if got.nil? and force
+        got
+      end
+
       def to_url(with_identifier = true)
         I18n.config.available_locales = [:en, :fr]
         url = I18n.transliterate(title.to_s)
