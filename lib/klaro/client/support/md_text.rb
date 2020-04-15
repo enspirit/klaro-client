@@ -33,7 +33,7 @@ module Klaro
       end
 
       def to_html
-        @renderer.render(to_s).strip
+        @renderer.render(to_s).strip.gsub(/<a href/, '<a target="_blank" href')
       end
 
     end # class MdText
