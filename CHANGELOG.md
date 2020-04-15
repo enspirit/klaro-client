@@ -1,4 +1,9 @@
-# 0.4.0
+# 0.4.4 - 2020-04-16
+
+* Add support for story attachments with various tools regarding cover ones
+  and urls.
+
+# 0.4.0 - 2020-04-08
 
 * Http bumped to "~> 4.2" which yields possible broken API since Http no longer
   exists, and is replaced by HTTP.
