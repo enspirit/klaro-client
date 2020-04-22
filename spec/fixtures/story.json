@@ -24,5 +24,12 @@
       "createdAt": "2020-04-07T12:55:38+00:00",
       "createdBy": "Julie"
     }
+  ],
+  "linked": [
+    {
+      "id": "101",
+      "identifier": 16,
+      "description": "This is a linked card"
+    }
   ]
 }

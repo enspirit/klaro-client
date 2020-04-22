@@ -15,6 +15,10 @@ module Klaro
       end
       alias :details :specification
 
+      def linked_cards
+        @linked_cards ||= (self.linked || []).map{|s| Story.dress(s, @client) }
+      end
+
       def attachments
         @attachments || super.map{|a| Attachment.dress(a, @client) }
       end

@@ -72,8 +72,15 @@ module Klaro
         end
       end
 
-      let(:client) do
-        Klaro::Client.new('https://foobar.klaro.cards')
+      describe "linked_cards" do
+        it 'works' do
+          stub_story(1)
+          story = client.story(1)
+          expect(story.linked_cards.each.size).to eql(1)
+          story.linked_cards.each do |s|
+            expect(s).to be_a(Client::Story)
+          end
+        end
       end
 
       describe "download_and_relocate_images" do

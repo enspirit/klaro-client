@@ -1,3 +1,7 @@
+# 0.5.0 - 2020-04-21
+
+* Add basic support for linked cards.
+
 # 0.4.4 - 2020-04-16
 
 * Add support for story attachments with various tools regarding cover ones
