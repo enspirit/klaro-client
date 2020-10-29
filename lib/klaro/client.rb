@@ -19,6 +19,10 @@ module Klaro
       request.with_token(*args, &bl)
     end
 
+    def with_project(*args, &bl)
+      request.with_project(*args, &bl)
+    end
+
     def login(*args, &bl)
       request.authenticate(*args, &bl)
     end

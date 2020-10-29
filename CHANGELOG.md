@@ -6,6 +6,10 @@
 
 * Update gem redcarpet to 3.5.1
 
+* Add support for `with_project` on RequestHandler & Client
+
+* The client base url may point to `/api/` explicitely
+
 # 0.5.0 - 2020-04-21
 
 * Add basic support for linked cards.

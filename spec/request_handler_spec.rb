@@ -4,9 +4,16 @@ module Klaro
   class Client
     describe RequestHandler do
       let(:request) { RequestHandler.new('https://foobar.klaro.cards') }
+
       describe 'initialize' do
         it 'saves base_url' do
           expect(request.base_url).to match(/https:\/\/[\S]+.klaro.cards/)
+        end
+        it 'strips any /api/ suffix' do
+          r = RequestHandler.new('https://foobar.klaro.cards/api')
+          expect(r.base_url).to eql("https://foobar.klaro.cards")
+          r2 = RequestHandler.new('https://foobar.klaro.cards/api/')
+          expect(r2.base_url).to eql("https://foobar.klaro.cards")
         end
       end
 

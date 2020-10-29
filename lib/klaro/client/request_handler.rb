@@ -6,8 +6,9 @@ module Klaro
       attr_reader :base_url, :token
 
       def initialize(url)
-        @base_url = url
+        @base_url = url.gsub(/\/api\/?$/, "")
         @token = nil
+        @subdomain = nil
       end
 
       def authenticated?
@@ -16,6 +17,11 @@ module Klaro
 
       def with_token(token_type, access_token)
         @token = "#{token_type} #{access_token}"
+        self
+      end
+
+      def with_project(subdomain)
+        @subdomain = subdomain
         self
       end
 
@@ -65,12 +71,16 @@ module Klaro
       end
 
       def http
-        Http.headers(
-          {
-            "Authorization" => @token,
-            "Content-Type" => "application/json"
-          }
-        )
+        Http.headers(http_headers)
+      end
+
+      def http_headers
+        hs = {
+          "Authorization" => @token,
+          "Content-Type" => "application/json"
+        }
+        hs['Klaro-Project-Subdomain'] = @subdomain if @subdomain
+        hs
       end
 
       def info(msg)
