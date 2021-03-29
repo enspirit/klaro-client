@@ -1,3 +1,7 @@
+# 0.5.1 - 2021-03-29
+
+* Update gem redcarpet to 3.5.1
+
 # 0.5.0 - 2020-04-21
 
 * Add basic support for linked cards.
