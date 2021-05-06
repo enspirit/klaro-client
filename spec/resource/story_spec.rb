@@ -86,6 +86,7 @@ module Klaro
       describe "download_and_relocate_images" do
         it 'works' do
           stub_story(1)
+          stub_download_file
           story = client.story(1)
           expect(story).to be_a(Client::Story)
           expect(story.specification.to_s).to eql(<<~MD)
