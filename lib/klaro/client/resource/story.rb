@@ -42,7 +42,8 @@ module Klaro
           url = attachment.url
           url += "?n=" + URI.encode_www_form_component(attachment.filename) unless url =~ /\?n=/
           path = handle_image(url, root_path, target_folder, client)
-          attachment.merge(url => path)
+          attachment.url = path
+          attachment
         end
         self.class.dress(self.to_h.merge(
           attachments: as
