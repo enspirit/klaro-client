@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    klaro-client (0.5.1)
+    klaro-client (0.5.2)
       dotenv (~> 2.7)
       http (~> 4.2)
       i18n (>= 1.8)
@@ -34,7 +34,7 @@ GEM
     http-form_data (2.3.0)
     http-parser (1.2.3)
       ffi-compiler (>= 1.0, < 2.0)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     path (2.0.1)
     public_suffix (4.0.1)
@@ -64,6 +64,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-15
 
 DEPENDENCIES
   klaro-client!

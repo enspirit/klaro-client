@@ -1,3 +1,7 @@
+# 0.5.2 - 2021-05-07
+
+* Fix Story#download_and_relocate_images: attachment.url was not properly set.
+
 # 0.5.1 - 2021-03-29
 
 * Update gem redcarpet to 3.5.1

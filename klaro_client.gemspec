@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.files = [
     'Gemfile',
     'Rakefile',
-    'VERSION',
   ] + Dir.glob('lib/**/*')
   s.require_paths = ['lib']
   s.add_dependency 'dotenv', '~> 2.7'
