@@ -1,3 +1,11 @@
+# 0.5.4 - 2021-05-08
+
+* Align with Klaro's API recent change. Story#description becomes Story#title.
+
+# 0.5.3 - 2021-05-07
+
+* Reimport 0.5.1 issues, we messed up with the release process.
+
 # 0.5.2 - 2021-05-07
 
 * Fix Story#download_and_relocate_images: attachment.url was not properly set.

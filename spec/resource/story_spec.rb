@@ -11,7 +11,7 @@ module Klaro
       def story(extra = {})
         Story.dress({
           identifier: 127,
-          description: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
+          title: "Hello **world**, how are you!!\nI'm fine, for myself\nand you?",
           specification: "Here **we** go!\ncariage [returns](http://returns.org) do not br\n\nbut doubles do p",
         }.merge(extra), client)
       end
@@ -26,18 +26,18 @@ module Klaro
         end
 
         it 'removes accents' do
-          expect(story(description: "Héhéhé ààà").to_url(false)).to eql("hehehe-aaa")
+          expect(story(title: "Héhéhé ààà").to_url(false)).to eql("hehehe-aaa")
         end
       end
 
       describe "title" do
-        it 'returns the first line of the story description' do
+        it 'returns the first line of the story title' do
           expect(story.title.to_html).to eql("<p>Hello <strong>world</strong>, how are you!!</p>")
         end
       end
 
       describe "summary" do
-        it 'returns all but the first line of the story description' do
+        it 'returns all but the first line of the story title' do
           expect(story.summary.to_html).to eql("<p>I&#39;m fine, for myself<br>\nand you?</p>")
         end
       end

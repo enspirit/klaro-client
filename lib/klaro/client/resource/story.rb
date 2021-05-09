@@ -2,18 +2,23 @@ module Klaro
   class Client
     class Story < Resource
 
+      def _title
+        self[:title] || self[:description]
+      end
+
       def title
-        @title ||= MdText.new(self.description.split("\n").first, :summary)
+        @title ||= MdText.new(self._title.split("\n").first, :summary)
       end
 
       def summary
-        @summary ||= MdText.new(self.description.split("\n")[1..-1].join("\n"), :summary)
+        @summary ||= MdText.new(self._title.split("\n")[1..-1].join("\n"), :summary)
       end
 
-      def specification
-        @specification ||= MdText.new(super, :details)
+      def details
+        details = self[:details] || self[:specification]
+        @specification ||= MdText.new(details, :details)
       end
-      alias :details :specification
+      alias :specification :details
 
       def linked_cards
         @linked_cards ||= (self.linked || []).map{|s| Story.dress(s, @client) }
