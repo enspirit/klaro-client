@@ -9,6 +9,7 @@ module Klaro
         @base_url = url.gsub(/\/api\/?$/, "")
         @token = nil
         @subdomain = nil
+        @workspace = nil
       end
 
       def authenticated?
@@ -25,8 +26,9 @@ module Klaro
         self
       end
 
-      def authenticate(user, password)
+      def authenticate(user, password, workspace = nil)
         @token = get_token Http
+        @workspace = workspace
         .headers({
           'Content-Type' => 'application/json'
         })
@@ -80,6 +82,7 @@ module Klaro
           "Content-Type" => "application/json"
         }
         hs['Klaro-Project-Subdomain'] = @subdomain if @subdomain
+        hs['X-Klaro-ViewAs'] = @workspace if @workspace
         hs
       end
 
