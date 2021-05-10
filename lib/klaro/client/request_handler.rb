@@ -27,12 +27,14 @@ module Klaro
       end
 
       def authenticate(user, password, workspace = nil)
-        @token = get_token Http
         @workspace = workspace
-        .headers({
-          'Content-Type' => 'application/json'
-        })
-        .post("#{base_url}/api/auth/tokens/", payload(user, password))
+        @token = get_token(
+          Http
+            .headers({
+              'Content-Type' => 'application/json'
+            })
+            .post("#{base_url}/api/auth/tokens/", payload(user, password))
+        )
       end
 
       def get(endpoint, raw = false)
