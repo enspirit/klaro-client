@@ -1,3 +1,11 @@
+# 0.5.6 - 2021-05-11
+
+* Adds Jenkinsfile and Makefile to help support gem build and release.
+
+# 0.5.5 - 2021-05-10
+
+* Add support for a default workspace view-as header when authentifying
+
 # 0.5.4 - 2021-05-08
 
 * Align with Klaro's API recent change. Story#description becomes Story#title.
