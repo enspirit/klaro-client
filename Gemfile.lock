@@ -10,8 +10,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
@@ -37,7 +37,7 @@ GEM
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     path (2.0.1)
-    public_suffix (4.0.6)
+    public_suffix (5.0.0)
     rake (13.0.6)
     redcarpet (3.5.1)
     rexml (3.2.5)
