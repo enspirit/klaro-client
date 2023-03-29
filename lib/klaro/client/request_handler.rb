@@ -10,6 +10,7 @@ module Klaro
         @token = nil
         @subdomain = nil
         @workspace = nil
+        @extra_headers = {}
       end
 
       def authenticated?
@@ -25,6 +26,14 @@ module Klaro
         @subdomain = subdomain
         self
       end
+
+      def with_extra_headers(headers)
+        x = dup
+        x.extra_headers = @extra_headers.merge(headers)
+        x
+      end
+      attr_accessor :extra_headers
+      protected :extra_headers
 
       def authenticate(user, password, workspace = nil)
         @workspace = workspace
@@ -75,7 +84,7 @@ module Klaro
       end
 
       def http
-        Http.headers(http_headers)
+        Http.headers(http_headers.tap{|hs| puts hs.inspect })
       end
 
       def http_headers
@@ -85,7 +94,7 @@ module Klaro
         }
         hs['Klaro-Project-Subdomain'] = @subdomain if @subdomain
         hs['X-Klaro-ViewAs'] = @workspace if @workspace
-        hs
+        hs.merge(@extra_headers)
       end
 
       def info(msg)

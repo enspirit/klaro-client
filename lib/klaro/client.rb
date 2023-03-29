@@ -39,8 +39,16 @@ module Klaro
       Board.dress(request.get("/api/boards/#{location_or_id}"), self)
     end
 
-    def board_stories(location_or_id)
-      Stories.dress(request.get("/api/boards/#{location_or_id}/stories/"), self)
+    DEFAULT_BOARD_STORIES_OPTIONS = {
+
+    }
+
+    def board_stories(location_or_id, options = {})
+      options = DEFAULT_BOARD_STORIES_OPTIONS.merge(options)
+      depth = options[:infoDepth] || 'short'
+      accept = "application/vnd+klaro.stories.#{depth}+json"
+      req = request.with_extra_headers("Accept" => accept)
+      Stories.dress(req.get("/api/boards/#{location_or_id}/stories/"), self)
     end
 
     def story(id_or_identifier)
