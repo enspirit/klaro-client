@@ -1,4 +1,4 @@
-## 0.6.0
+## 0.6.0 - 2023-06-23
 
 * Upgraded dependencies, notably http (5.x)
 
