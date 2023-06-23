@@ -1,16 +1,19 @@
-name: Release gem
+name: Publish gem to Rubygem
 
 on:
   push:
     tags:
-      - '*'
+    - '*'
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
-  Tests:
+  ci:
     uses: enspirit/klaro-client/.github/workflows/integration.yml@master
 
-  RubyGems:
-    needs: Tests
+  rubygem:
+    needs: ci
     runs-on: ubuntu-latest
     steps:
       - uses: act10ns/slack@v1
@@ -22,52 +25,17 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.4
+          ruby-version: 2.7
           bundler-cache: true
 
-      - name: Build gem
-        id: build-gem
-        run: make gem
+      - run: make package
 
       - name: Release Gem
         uses: cadwallion/publish-rubygems-action@master
         id: gem-push
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-          RELEASE_COMMAND: make gem.publish
-
-      - uses: act10ns/slack@v1
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-          channel: '#opensource-cicd'
-        if: always()
-
-  Github:
-    needs: Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: act10ns/slack@v1
-        with:
-          status: starting
-          channel: '#opensource-cicd'
-
-      - uses: actions/checkout@v2
-
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.4
-          bundler-cache: true
-
-      - name: Build packages
-        run: make gem
-        id: build-gem
-
-      - uses: ncipollo/release-action@v1
-        id: create-release
-        with:
-          artifacts: "pkg/*.gem"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_COMMAND: make gem.push
 
       - uses: act10ns/slack@v1
         with:

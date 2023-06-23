@@ -1,18 +1,11 @@
-clean:
-	rm -rf pkg/*
-	rm -rf tmp/*
+bundle:
+	bundle install
 
-test:
+package: bundle
+	bundle exec rake package
+
+tests: bundle
 	bundle exec rake test
 
-################################################################################
-### Gem Management
-###
-
-pkg:
-	bundle exec rake gem
-
-gem: pkg
-
-gem.publish: gem
-	gem push `ls -Art pkg/*.gem | tail -n 1`
+gem.push:
+	ls pkg/klaro-client-*.gem | xargs gem push
