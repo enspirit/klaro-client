@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.add_dependency 'dotenv', '~> 2.7'
   s.add_dependency 'http', '>= 5.0', '< 6.0'
-  s.add_dependency 'redcarpet', '>= 3.6', '< 4.0'
+  s.add_dependency 'commonmarker', '>= 0.26', '< 1.0'
   s.add_dependency 'i18n', '>= 1.8'
   s.add_development_dependency 'path', '~> 2.1'
   s.add_development_dependency 'rspec', '~> 3.8'

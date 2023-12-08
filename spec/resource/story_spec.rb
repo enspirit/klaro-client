@@ -38,13 +38,13 @@ module Klaro
 
       describe "summary" do
         it 'returns all but the first line of the story title' do
-          expect(story.summary.to_html).to eql("<p>I&#39;m fine, for myself<br>\nand you?</p>")
+          expect(story.summary.to_html).to eql("<p>I'm fine, for myself<br />\nand you?</p>")
         end
       end
 
       describe "specification" do
         it 'returns the specification' do
-          expect(story.specification.to_html).to eql(%Q{<p>Here <strong>we</strong> go!\ncariage <a target="_blank" href="http://returns.org">returns</a> do not br</p>\n\n<p>but doubles do p</p>})
+          expect(story.specification.to_html).to eql(%Q{<p>Here <strong>we</strong> go!\ncariage <a target="_blank" href="http://returns.org">returns</a> do not br</p>\n<p>but doubles do p</p>})
           expect(story.details.to_html).to eql(story.specification.to_html)
         end
       end

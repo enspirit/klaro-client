@@ -1,6 +1,6 @@
 require 'http'
 require 'path'
-require 'redcarpet'
+require 'commonmarker'
 require 'i18n'
 
 module Klaro

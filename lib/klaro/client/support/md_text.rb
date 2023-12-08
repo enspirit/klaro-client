@@ -3,37 +3,28 @@ module Klaro
     class MdText
 
       SHARED_OPTIONS = {
-        filter_html: true,
-        no_links: false,
-        no_styles: true,
-        safe_links_only: true,
-        with_toc_data: false
-      }
-
-      VARIANTS = {
-        :summary => Redcarpet::Markdown.new(
-          Redcarpet::Render::HTML.new(SHARED_OPTIONS.merge({
-            hard_wrap: true,
-          }))
-        ),
-        :details => Redcarpet::Markdown.new(
-          Redcarpet::Render::HTML.new(SHARED_OPTIONS.merge({
-            hard_wrap: false,
-          }))
-        )
+        unsafe: false,
       }
 
       def initialize(src, variant)
         @src = src
-        @renderer = VARIANTS[variant]
+        @variant = variant
       end
 
       def to_s
         @src
       end
 
+      def render_options
+        SHARED_OPTIONS.merge({
+          hardbreaks: (@variant == :summary)
+        })
+      end
+
       def to_html
-        @renderer.render(to_s).strip.gsub(/<a href/, '<a target="_blank" href')
+        Commonmarker.to_html(to_s, options: {
+          render: render_options
+        }).strip.gsub(/<a href/, '<a target="_blank" href')
       end
 
     end # class MdText

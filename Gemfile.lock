@@ -1,0 +1,74 @@
+PATH
+  remote: .
+  specs:
+    klaro-client (0.6.0)
+      commonmarker (>= 0.26, < 1.0)
+      dotenv (~> 2.7)
+      http (>= 5.0, < 6.0)
+      i18n (>= 1.8)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
+    commonmarker (1.0.0.pre12-aarch64-linux)
+    commonmarker (1.0.0.pre12-arm64-darwin)
+    concurrent-ruby (1.2.2)
+    crack (0.4.5)
+      rexml
+    diff-lcs (1.5.0)
+    domain_name (0.6.20231109)
+    dotenv (2.8.1)
+    ffi (1.16.3)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    hashdiff (1.0.1)
+    http (5.1.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    path (2.1.0)
+    public_suffix (5.0.4)
+    rake (13.1.0)
+    rexml (3.2.6)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
+    webmock (3.19.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
+
+PLATFORMS
+  aarch64-linux
+  arm64-darwin-22
+
+DEPENDENCIES
+  klaro-client!
+  path (~> 2.1)
+  rspec (~> 3.8)
+  webmock (~> 3.7)
+
+BUNDLED WITH
+   2.3.26

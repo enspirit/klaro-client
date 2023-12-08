@@ -1,3 +1,9 @@
+## 0.7.0
+
+* Replaced Redcarpet by Commonmarker, which is closer to the Markdown
+  engine we use in Klaro Cards itself, and supports code highlighting
+  natively.
+
 ## 0.6.0 - 2023-06-23
 
 * Upgraded dependencies, notably http (5.x)
