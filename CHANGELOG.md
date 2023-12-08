@@ -1,4 +1,7 @@
-## 0.7.0
+## 0.7.0 - 2023-12-08
+
+* BREAKING: removed support for ruby 2.7. Ruby 3.1 is the minimal
+  version supported.
 
 * Replaced Redcarpet by Commonmarker, which is closer to the Markdown
   engine we use in Klaro Cards itself, and supports code highlighting
