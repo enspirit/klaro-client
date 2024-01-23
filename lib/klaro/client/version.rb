@@ -2,7 +2,7 @@ module Klaro
   class Client
     module Version
       MAJOR = 0
-      MINOR = 7
+      MINOR = 8
       TINY  = 0
     end
     VERSION = "#{Version::MAJOR}.#{Version::MINOR}.#{Version::TINY}"
