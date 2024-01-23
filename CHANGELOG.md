@@ -1,3 +1,9 @@
+## 0.8.0
+
+* Add support for Client#with_caching that caches GET requests
+  to Klaro boards and stories. This is not intended to be used
+  in production, as the cache is never invalidated.
+
 ## 0.7.0 - 2023-12-08
 
 * BREAKING: removed support for ruby 2.7. Ruby 3.1 is the minimal

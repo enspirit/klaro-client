@@ -36,6 +36,7 @@ module Klaro
 
       describe '#get' do
         let(:endpoint) { '/boards/news/stories/' }
+
         it 'gets data from endpoint' do
            stub_request(:get, "https://foobar.klaro.cards/boards/news/stories/")
             .with(
@@ -43,6 +44,20 @@ module Klaro
             )
             .to_return(status: 200, body: stories)
           request.get(endpoint)
+        end
+
+        it 'supports a caching strategy' do
+          stub_request(:get, "https://foobar.klaro.cards/boards/news/stories/")
+            .with(
+               headers: simple_header
+            )
+            .to_return(status: 200, body: stories)
+          r = request.with_cache({
+            path: Path.dir/'fixtures/cache',
+            ttl: 3600,
+          })
+          first = r.get(endpoint)
+          expect(r.get(endpoint)).to eql(first)
         end
       end
     end

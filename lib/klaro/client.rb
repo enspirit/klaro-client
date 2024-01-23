@@ -2,6 +2,7 @@ require 'http'
 require 'path'
 require 'commonmarker'
 require 'i18n'
+require 'digest'
 
 module Klaro
   class Client
@@ -9,6 +10,11 @@ module Klaro
 
     def initialize(base_url)
       @request = RequestHandler.new(base_url)
+    end
+
+    def with_caching(options)
+      @request = request.with_cache(options)
+      self
     end
 
     def absolute_url(url)
@@ -41,6 +47,13 @@ module Klaro
 
     def board_stories(location_or_id)
       Stories.dress(request.get("/api/boards/#{location_or_id}/stories/"), self)
+    end
+
+    def board_stories_full(location_or_id)
+      hs = { 'Accept': 'application/vnd+klaro.stories.full+json' }
+      Stories.dress(
+        request.get("/api/boards/#{location_or_id}/stories/", false, hs),
+        self)
     end
 
     def story(id_or_identifier)

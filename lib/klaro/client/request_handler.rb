@@ -10,6 +10,7 @@ module Klaro
         @token = nil
         @subdomain = nil
         @workspace = nil
+        @caching_options = nil
       end
 
       def authenticated?
@@ -23,6 +24,11 @@ module Klaro
 
       def with_project(subdomain)
         @subdomain = subdomain
+        self
+      end
+
+      def with_cache(caching_options)
+        @caching_options = caching_options
         self
       end
 
@@ -40,10 +46,27 @@ module Klaro
       def get(endpoint, raw = false)
         url = "#{base_url}#{endpoint}"
         info("GET `#{url}`")
-        response = http.get(url, ssl_context: http_ctx)
-        raise Error::NoSuchBoardFound if response.status >= 300 || response.status <200
-
+        response = get_in_cache(url) do
+          res = http.get(url, ssl_context: http_ctx)
+          raise Error::NoSuchBoardFound unless res.status == 200
+          res.to_s
+        end
         raw ? response.to_s : JSON.parse(response.to_s)
+      end
+
+      def get_in_cache(url, &bl)
+        return bl.call unless @caching_options
+
+        sha = Digest::SHA1.hexdigest(url)
+        file = @caching_options[:path]/sha
+        if file.file?
+          file.read
+        else
+          str = bl.call
+          file.parent.mkdir_p
+          file.write(str)
+          str
+        end
       end
 
       def post(endpoint, body)
@@ -53,6 +76,7 @@ module Klaro
       end
 
     private
+
       def get_token(response)
         raise Error::AuthenticationFailed if response.status >= 300 || response.status <200
 
@@ -74,8 +98,8 @@ module Klaro
         OpenSSL::SSL::SSLContext.new
       end
 
-      def http
-        Http.headers(http_headers)
+      def http(headers = {})
+        Http.headers(http_headers.merge(headers))
       end
 
       def http_headers
