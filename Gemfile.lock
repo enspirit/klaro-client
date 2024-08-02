@@ -12,6 +12,8 @@ GEM
   specs:
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    commonmarker (1.0.0.pre12)
+      rb_sys (~> 0.9)
     commonmarker (1.0.0.pre12-arm64-darwin)
     concurrent-ruby (1.2.2)
     crack (0.4.5)
@@ -40,7 +42,9 @@ GEM
     path (2.1.0)
     public_suffix (5.0.4)
     rake (13.1.0)
-    rexml (3.2.6)
+    rb_sys (0.9.99)
+    rexml (3.3.3)
+      strscan
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -54,13 +58,13 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
+    strscan (3.1.0)
     webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
-  aarch64-linux
   arm64-darwin-22
   x86_64-linux
 
