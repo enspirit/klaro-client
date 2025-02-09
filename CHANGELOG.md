@@ -1,3 +1,7 @@
+## 0.9.0
+
+* Upgraded dependencies. Commonmark  2.0.
+
 ## 0.8.0
 
 * Add support for Client#with_caching that caches GET requests

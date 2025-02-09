@@ -3,6 +3,7 @@ require 'path'
 require 'commonmarker'
 require 'i18n'
 require 'digest'
+require 'ostruct'
 
 module Klaro
   class Client
