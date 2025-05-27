@@ -1,3 +1,7 @@
+## 0.9.1
+
+* Add support for override options in MdText#to_html
+
 ## 0.9.0
 
 * Upgraded dependencies. Commonmark  2.0.

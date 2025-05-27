@@ -25,6 +25,11 @@ module Klaro
           expect(got).to eql("<p>hello<!-- raw HTML omitted -->display: none;<!-- raw HTML omitted --></p>")
         end
 
+        it 'supports table rendering' do
+          got = MdText.new("<table><tr><td>hello</td></tr></table>", :details, unsafe: true).to_html
+          expect(got).to eql("<table><tr><td>hello</td></tr></table>")
+        end
+
       end
     end
   end
