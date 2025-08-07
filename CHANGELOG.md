@@ -1,4 +1,4 @@
-## 0.9.2
+## 0.9.2 - 2025-08-07
 
 * Add Client#with_workspace that sets the X-Klaro-ViewAs header
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    klaro-client (0.9.1)
+    klaro-client (0.9.2)
       commonmarker (>= 2.0, < 3.0)
       http (>= 5.0, < 6.0)
       i18n (>= 1.8)
