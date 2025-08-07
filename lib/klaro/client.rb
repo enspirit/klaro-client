@@ -30,6 +30,10 @@ module Klaro
       request.with_project(*args, &bl)
     end
 
+    def with_workspace(*args, &bl)
+      request.with_workspace(*args, &bl)
+    end
+
     def login(*args, &bl)
       request.authenticate(*args, &bl)
     end

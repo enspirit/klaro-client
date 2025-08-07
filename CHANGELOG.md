@@ -1,3 +1,7 @@
+## 0.9.2
+
+* Add Client#with_workspace that sets the X-Klaro-ViewAs header
+
 ## 0.9.1
 
 * Add support for override options in MdText#to_html

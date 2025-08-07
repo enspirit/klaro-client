@@ -27,6 +27,11 @@ module Klaro
         self
       end
 
+      def with_workspace(workspace)
+        @workspace = workspace
+        self
+      end
+
       def with_cache(caching_options)
         @caching_options = caching_options
         self
