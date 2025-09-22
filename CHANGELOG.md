@@ -1,3 +1,7 @@
+## 0.9.3
+
+* Fix board_stories_full raising an ArgumentError.
+
 ## 0.9.2 - 2025-08-07
 
 * Add Client#with_workspace that sets the X-Klaro-ViewAs header

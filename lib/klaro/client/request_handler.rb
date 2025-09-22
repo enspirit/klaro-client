@@ -48,11 +48,11 @@ module Klaro
         )
       end
 
-      def get(endpoint, raw = false)
+      def get(endpoint, raw = false, extra_headers = {})
         url = "#{base_url}#{endpoint}"
         info("GET `#{url}`")
         response = get_in_cache(url) do
-          res = http.get(url, ssl_context: http_ctx)
+          res = http(extra_headers).get(url, ssl_context: http_ctx)
           raise Error::NoSuchBoardFound unless res.status == 200
           res.to_s
         end

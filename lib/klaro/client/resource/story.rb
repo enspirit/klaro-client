@@ -25,12 +25,12 @@ module Klaro
       end
 
       def attachments
-        @attachments || super.map{|a| Attachment.dress(a, @client) }
+        @attachments || (super || []).map{|a| Attachment.dress(a, @client) }
       end
 
       def cover_attachment(force = false)
         got = (self.attachments || []).find{|a| a[:isCover] }
-        got = (self.attachments || []).first if got.nil? and force
+        got = (self.attachments || []).first if got.nil? && force
         got
       end
 
