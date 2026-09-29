@@ -1,3 +1,25 @@
+## 0.10.0
+
+* Opened the `http` dependency to 6.x (`>= 5.0, < 7.0`), so that downstream
+  applications are free to upgrade. Both 5.3.x and 6.0.x are tested. The two
+  places broken by http 6 have been fixed in a way that stays compatible with
+  5.x: request options are now splatted as keyword arguments, and response
+  headers are read through `response.headers[...]` rather than the removed
+  `response[...]` shortcut.
+
+* BREAKING: ruby 3.2 is now the minimal version supported (enforced through
+  `required_ruby_version`). This follows from http 6 and commonmarker 2.x,
+  which both require it.
+
+* `path` and `ostruct` are now runtime dependencies. Both were already
+  required by `lib/klaro/client.rb`, but `path` was only declared as a
+  development dependency, and `ostruct` stops being a default gem in ruby 3.5.
+
+* `rake` is now an explicit development dependency. It used to be pulled in
+  transitively by `llhttp-ffi`, which http 6 no longer depends on.
+
+* Opened the `dotenv` development dependency to 3.x.
+
 ## 0.9.3
 
 * Fix board_stories_full raising an ArgumentError.
