@@ -44,7 +44,7 @@ module Klaro
             .headers({
               'Content-Type' => 'application/json'
             })
-            .post("#{base_url}/api/auth/tokens/", payload(user, password))
+            .post("#{base_url}/api/auth/tokens/", **payload(user, password))
         )
       end
 
@@ -77,7 +77,7 @@ module Klaro
       def post(endpoint, body)
         url = "#{base_url}#{endpoint}"
         info("POST `#{url}`")
-        http.post(url, body.merge(ssl_context: http_ctx))
+        http.post(url, **body.merge(ssl_context: http_ctx))
       end
 
     private

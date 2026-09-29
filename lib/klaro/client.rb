@@ -72,7 +72,7 @@ module Klaro
         }
       }
       response = request.post('/s/', body)
-      URI(response['location']).request_uri
+      URI(response.headers['location']).request_uri
     end
   end
 end
